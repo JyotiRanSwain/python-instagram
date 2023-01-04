@@ -14,9 +14,7 @@ pipeline {
 
 stage ('Build python package') {
             steps {
-                sh '''
-                    python setup.py sdist bdist_wheel
-                '''
+                sh 'python setup.py sdist bdist_wheel'
             }
         }
         }
