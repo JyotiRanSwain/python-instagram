@@ -12,19 +12,11 @@ pipeline {
       }   
     }
 
-    stage ('Upload packages') {
-        steps {
-            rtUpload (
-                serverId: "ARTIFACTORY_SERVER",
-                    spec: '''{
-                        "files": [
-                            {
-                                "pattern": "dist/",
-                                "target": "artifactory-python-dev-local/"
-                            }
-                        ]
-                    }'''
-                )
+stage ('Build python package') {
+            steps {
+                sh '''
+                    python setup.py sdist bdist_wheel
+                '''
             }
         }
         }
